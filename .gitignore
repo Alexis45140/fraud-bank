@@ -1,0 +1,20 @@
+# Données brutes : trop lourdes pour GitHub (voir data/raw/README.md)
+data/raw/*
+!data/raw/README.md
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Fichiers temporaires Power BI et Office
+~$*
+*.tmp
+.pbi/localSettings.json
+.pbi/cache.abf
+
+# Système et secrets
+.DS_Store
+Thumbs.db
+.env
