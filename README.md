@@ -222,6 +222,13 @@ fraud-bank/
 
 ## Contact
 
-- GitHub : [Alexis45140](https://github.com/Alexis45140)
-- LinkedIn : [alexis-claudeon](https://www.linkedin.com/in/alexis-claudeon)
-- E-mail : alexis.claudeon@outlook.fr
+<div align="center">
+
+### Alexis Claudeon
+**Data Analyst | Analytics Engineer junior**
+
+[![GitHub](https://img.shields.io/badge/GitHub-Alexis45140-181717?logo=github&logoColor=white)](https://github.com/Alexis45140)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-alexis--claudeon-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexis-claudeon)
+[![E-mail](https://img.shields.io/badge/E--mail-alexis.claudeon%40outlook.fr-0078D4)](mailto:alexis.claudeon@outlook.fr)
+
+</div>
