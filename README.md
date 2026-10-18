@@ -4,9 +4,9 @@ Comment repérer presque toutes les fraudes sans noyer l'équipe de contrôle so
 
 ## En bref
 
-- Problème : sur 6,36 millions de paiements mobiles simulés, la règle de contrôle actuelle de la banque ne repère que 16 fraudes sur 8 213, soit 0,2 %.
-- Démarche : j'ai testé 8 règles de détection, étudié les fraudes qui leur échappaient, puis vérifié le résultat dans un second outil.
-- Résultat : la règle retenue repère **99,1 %** des fraudes. **83 %** de ses alertes sont de vraies fraudes, pour environ **320 alertes par jour**, un volume qu'une équipe peut traiter.
+- Problème : la règle de contrôle actuelle de la banque ne repère que 0,2 % des fraudes (16 sur 8 213).
+- Démarche : tester 8 règles sur 6,36 millions de paiements simulés, étudier les fraudes manquées, vérifier le résultat dans un second outil.
+- Résultat : la règle retenue repère **99,1 %** des fraudes, avec **83 %** d'alertes justifiées et environ **320 alertes par jour**, un volume qu'une équipe peut traiter.
 - Outils : Python, KNIME (outil visuel de traitement de données) et Power BI (tableaux de bord).
 
 ![Page 1 du tableau de bord : comparaison des 8 règles testées](powerbi/page1_comparaison_regles.png)
@@ -19,18 +19,18 @@ Comment repérer presque toutes les fraudes sans noyer l'équipe de contrôle so
 | R3 : l'argent arrive sur un compte dont le solde reste à zéro | 186 | 49,6 % | 70,5 % |
 | **R7, règle retenue** : R3, ou un retrait qui vide exactement le compte | 318 | 99,1 % | 82,7 % |
 
-Fraudes détectées : la part des fraudes repérées par la règle. Alertes justifiées (ou précision) : la part des alertes qui sont de vraies fraudes.
+Alertes justifiées (ou précision) : la part des alertes qui sont de vraies fraudes.
 
-Pourquoi ne pas tout signaler ? Une règle qui signale tous les virements et retraits repère 100 % des fraudes, mais produit environ 89 000 alertes par jour, dont 99,7 % de fausses alertes. Aucune équipe ne peut les traiter.
+Pourquoi ne pas tout signaler ? Signaler tous les virements et retraits repère 100 % des fraudes, mais produit environ 89 000 alertes par jour, dont 99,7 % de fausses : aucune équipe ne peut les traiter.
 
 ## Compétences mobilisées
 
-- **Concevoir et évaluer des règles de contrôle** : 8 règles testées et comparées sur les mêmes indicateurs.
-- **Arbitrer entre détection et volume d'alertes** : des règles qui repéraient plus de 97 % des fraudes ont été écartées, car elles produisaient plus de 38 000 alertes par jour.
-- **Analyser les cas non détectés** : l'étude des fraudes manquées par une première règle (R3) a révélé le signal qui fait passer la détection de 49,6 % à 99,1 %.
-- **Mener une recette entre deux outils** (vérifier que deux traitements donnent le même résultat) : la règle reconstruite dans KNIME a été comparée à Python transaction par transaction, sans aucun écart.
-- **Restituer à un public non technique** : un tableau de bord Power BI de deux pages, lisible sans connaître le code.
-- **Garder un esprit critique sur les données** : repérage d'un biais en début de période (comptes encore sans historique), et limites des données simulées signalées.
+- **Concevoir et évaluer des règles de contrôle** : 8 règles comparées sur les mêmes indicateurs.
+- **Arbitrer entre détection et volume d'alertes** : écarter des règles qui repèrent plus de 97 % des fraudes mais produisent plus de 38 000 alertes par jour.
+- **Analyser les cas non détectés** : les fraudes manquées par R3 ont révélé le signal qui porte la détection à 99,1 %.
+- **Mener une recette** (vérifier que deux outils donnent le même résultat) : KNIME et Python comparés transaction par transaction, zéro écart.
+- **Restituer à un public non technique** : un tableau de bord Power BI de deux pages.
+- **Garder un esprit critique sur les données** : biais de début de période repéré, limites des données simulées signalées.
 
 ## Outils
 
@@ -217,3 +217,11 @@ fraud-bank/
 4. **Workflow KNIME** (créé avec KNIME 5.12) : importer `knime/aml_detection.knwf` dans KNIME (menu d'import ou glisser-déposer dans l'explorateur). Le workflow est fourni sans données. Les nœuds CSV Reader et CSV Writer utilisent des chemins absolus : les remplacer par l'emplacement de `data/raw/Synthetic_Financial_datasets_log.csv` et de `outputs/knime_alertes_R7.csv` sur votre poste, puis exécuter le workflow.
 
 5. **Tableau de bord** : ouvrir `powerbi/aml_dashboard.pbix` avec Power BI Desktop. Si les sources de données ne sont pas trouvées, mettre à jour leur chemin (Transformer les données, puis Paramètres de la source de données).
+
+---
+
+## Contact
+
+- GitHub : [Alexis45140](https://github.com/Alexis45140)
+- LinkedIn : [alexis-claudeon](https://www.linkedin.com/in/alexis-claudeon)
+- E-mail : alexis.claudeon@outlook.fr
