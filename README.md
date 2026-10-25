@@ -147,6 +147,28 @@ Cette page montre :
 
 **Effet de démarrage** : 1 059 des 1 706 fausses alertes (62 %) tombent les deux premiers jours de la simulation. Les comptes destinataires n'ont alors pas encore d'historique (solde à 0 avant et après), ce qui déclenche le signal « destinataire incohérent ». En production, une règle fondée sur l'historique des comptes demanderait une période de rodage.
 
+<details>
+<summary><strong>Mesures DAX du tableau de bord</strong></summary>
+
+<br>
+
+Huit mesures, sur la table `alertes_R7` (les alertes de la règle R7).
+
+| Mesure | Formule | Valeur |
+|---|---|---|
+| Alertes | `COUNTROWS ( alertes_R7 )` | 9 849 |
+| Fraudes détectées | `SUM ( alertes_R7[isFraud] )` | 8 143 |
+| Fausses alertes | `[Alertes] - [Fraudes détectées]` | 1 706 |
+| Précision | `DIVIDE ( [Fraudes détectées], [Alertes] )` | 82,7 % |
+| Total fraudes | `8213` | 8 213 |
+| Taux de détection | `DIVIDE ( [Fraudes détectées], [Total fraudes] )` | 99,1 % |
+| Montant protégé | `CALCULATE ( SUM ( alertes_R7[amount] ), alertes_R7[isFraud] = 1 )` | environ 12,0 milliards (unité simulée) |
+| Alertes par jour | `DIVIDE ( [Alertes], DISTINCTCOUNT ( alertes_R7[jour] ) )` | 318, sur 31 jours |
+
+`Total fraudes` est une constante : la table ne contient que les alertes de R7, le total des fraudes du jeu complet ne peut pas s'y compter. Si les données changent, elle se met à jour à la main.
+
+</details>
+
 ### Enseignements
 
 - Une intuition métier doit être confrontée aux données : l'idée que les gros montants sont suspects (R4) ne tient pas.
