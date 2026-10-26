@@ -7,6 +7,8 @@ Comment repérer presque toutes les fraudes sans noyer l'équipe de contrôle so
 - Problème : la règle de contrôle actuelle de la banque ne repère que 0,2 % des fraudes (16 sur 8 213).
 - Démarche : tester 8 règles sur 6,36 millions de paiements simulés, étudier les fraudes manquées, vérifier le résultat dans un second outil.
 - Résultat : la règle retenue repère **99,1 %** des fraudes, avec **83 %** d'alertes justifiées et environ **320 alertes par jour**, un volume qu'une équipe peut traiter.
+- Recommandation : remplacer la règle actuelle par R7. Les règles qui détectent davantage (jusqu'à 100 %) produisent plus de 38 000 alertes par jour.
+- Limite : données simulées, où le signal de R7 est plus net qu'il ne le serait sur des données réelles ; avant toute mise en production, rejouer R7 sur un historique réel.
 - Outils : Python, KNIME (outil visuel de traitement de données) et Power BI (tableaux de bord).
 
 ![Page 1 du tableau de bord : comparaison des 8 règles testées](powerbi/page1_comparaison_regles.png)
